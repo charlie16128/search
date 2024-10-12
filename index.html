@@ -3,97 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>Cambridge詞典搜尋</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
+    <link rel="stylesheet" href="/CSS/查英文.css">
+    <link rel="stylesheet" href="查英文.css">
 
-        .container {
-            text-align: center;
-        }
-
-        .bold {
-            font-weight: bold;
-            font-size: 24px;
-        }
-
-        .sub-title {
-            font-size: 40px;
-            margin-bottom: 10px;
-            color: black;
-            margin-top: 20px;
-        }
-
-        input {
-            outline: none;
-            width: 300px;
-            padding: 5px;
-            margin-bottom: 10px;
-            font-size: 20px;
-            border-radius: 15px;
-            border: 3px solid #45d0ff;
-            border-color: rgb(91, 195, 255);
-            transition: border-color 0.3s, transform 0.35s;
-        }
-
-        input:hover {
-            border-color: rgb(165, 0, 231);
-            border-width: 3px;
-            transform: scale(1.1);
-        }
-
-        input:focus {
-            border-color: rgb(255, 0, 162);
-            border-width: 3px;
-            transform: scale(1.1);
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 8px 20px;
-            font-size: 18px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 980px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.35s;
-        }
-
-        button:hover {
-            background-color: #00aeff;
-            border-color: darkviolet;
-            transform: scale(1.2);
-        }
-
-        .search-history {
-            color: rgb(221, 0, 255);
-            margin-top: 20px;
-            text-align: left;
-            width: 300px;
-            font-size: 30px;
-        }
-
-        .search-history-title {
-            text-align: center;
-            color: black;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 0px;
-        }
-
-        ::placeholder {
-            color: rgba(0, 0, 0, 0.621);
-            font-size: 20px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -114,64 +26,7 @@
         <div id="searchHistory"></div>
     </div>
 
-    <script>
-        function searchCambridge() {
-            var searchTerm = document.getElementById('searchInput').value;
-            if (searchTerm.trim() !== '') {
-                var url = 'https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/' + encodeURIComponent(searchTerm);
-                window.open(url, '_blank');
-                addSearchHistory(searchTerm);
-                document.getElementById('searchInput').value = ''; // 清空搜尋框內容
-                resetSearchInput();
-            } else {
-                triggerErrorMessage();
-            }
-        }
-
-        function handleKeyPress(event) {
-            if (event.keyCode === 13) {
-                searchCambridge();
-            }
-        }
-
-        function addSearchHistory(searchTerm) {
-            var searchHistoryDiv = document.getElementById('searchHistory');
-            var historyItem = document.createElement('div');
-            var link = document.createElement('button');
-            link.textContent = '連結';
-            link.classList.add('history-link');
-            link.addEventListener('click', function() {
-                window.open(getCambridgeURL(searchTerm), '_blank');
-            });
-            historyItem.innerHTML = searchTerm + ' ';
-            historyItem.appendChild(link);
-            searchHistoryDiv.appendChild(historyItem);
-        }
-
-        function getCambridgeURL(searchTerm) {
-            return 'https://dictionary.cambridge.org/zht/%E8%A9%9E%E5%85%B8/%E8%8B%B1%E8%AA%9E-%E6%BC%A2%E8%AA%9E-%E7%B9%81%E9%AB%94/' + encodeURIComponent(searchTerm);
-        }
-
-        function triggerErrorMessage() {
-            var searchInput = document.getElementById('searchInput');
-
-            // 設定放大時的樣式
-            searchInput.style.transition = 'transform 0.35s, border-color 0.35s';
-            searchInput.style.borderColor = 'red';
-            searchInput.style.transform = 'scale(1.15)';
-
-            // 在放大後 300 毫秒縮小並將外框顏色變回藍色
-            setTimeout(function() {
-                searchInput.style.transform = 'scale(1)';
-                searchInput.style.borderColor = 'rgb(91, 195, 255)';
-            }, 300);
-        }
-
-        function resetSearchInput() {
-            var searchInput = document.getElementById('searchInput');
-            searchInput.style.borderColor = 'rgb(91, 195, 255)';
-            searchInput.style.transition = 'none';
-        }
-    </script>
+    <script src="Javascript/查英文.js"></script>
+    <script src="查英文.js"></script>
 </body>
-</html>
+</html> 
