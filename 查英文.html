@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cambridge詞典搜尋</title>
+    <link rel="stylesheet" href="/CSS/查英文.css">
+    <link rel="stylesheet" href="查英文.css">
+
+</head>
+<body>
+    <div class="container">
+        <p class="sub-title bold">
+            Cambridge
+            <br>
+            英文詞典搜尋工具
+        </p>
+        <input type="text" id="searchInput" placeholder="請輸入單字" onkeydown="handleKeyPress(event)">
+        <br>
+        <button onclick="searchCambridge()">
+            搜尋
+        </button>
+    </div>
+
+    <div class="search-history">
+        <p class="search-history-title">搜尋歷史</p>
+        <div id="searchHistory"></div>
+    </div>
+
+    <script src="Javascript/查英文.js"></script>
+    <script src="查英文.js"></script>
+</body>
+</html> 
